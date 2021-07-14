@@ -63,7 +63,6 @@ namespace APIs.Controllers
                     new OracleParameter(":goodsName",OracleDbType.Varchar2,10),
                     new OracleParameter(":showId",OracleDbType.Long,10),
                     new OracleParameter(":is_valid",OracleDbType.Byte,1),
-                    new OracleParameter(":desccription",OracleDbType.Clob),
                     new OracleParameter(":photo",OracleDbType.Blob)
                     };
 
@@ -71,9 +70,8 @@ namespace APIs.Controllers
                     parametersForInsertIntoGoods[1].Value = goods.goodsName;
                     parametersForInsertIntoGoods[2].Value = goods.showId;
                     parametersForInsertIntoGoods[3].Value = 1;     //添加时默认有效位为1
-                    parametersForInsertIntoGoods[4].Value = goods.description;
                     byte[] blob = System.Text.Encoding.Default.GetBytes(goods.goodsPhoto);
-                    parametersForInsertIntoGoods[5].Value = blob;
+                    parametersForInsertIntoGoods[4].Value = blob;
 
                     dbHelper.ExecuteNonQuery(insert_into_goods, parametersForInsertIntoGoods);
 
